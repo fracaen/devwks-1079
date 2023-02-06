@@ -4,7 +4,7 @@ provider "aws" {
    secret_key                   = "<copy_secret_key_here>"
 }
 
-resource "aws_instance" "clus" {
+resource "aws_instance" "ciscolive" {
    ami                          = "ami-071e61cec88c326c5"
    instance_type                = "t3.medium"
    availability_zone            = "eu-central-1a"
@@ -26,14 +26,14 @@ resource "aws_instance" "clus" {
    EOF
    
    #provisioner "local-exec" {
-   #   command = "ansible-playbook edge.yml --extra-vars 'edge_public=${aws_instance.clus.public_ip}'"
+   #   command = "ansible-playbook edge.yml --extra-vars 'edge_public=${aws_instance.ciscolive.public_ip}'"
    #}
 }
 
 output "instance_public_ip" {
-   value                        = aws_instance.clus.public_ip
+   value                        = aws_instance.ciscolive.public_ip
 }
 
 output "instance_private_ip" {
-   value                        = aws_instance.clus.private_ip
+   value                        = aws_instance.ciscolive.private_ip
 }
